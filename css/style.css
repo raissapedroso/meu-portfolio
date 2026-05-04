@@ -1,0 +1,186 @@
+/* Reset e Variáveis */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-vinho: #72161c;
+    --bg-rose: #d17479;
+    --texto-azul: #cbd5e1;
+    --transicao: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-vinho);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 10%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+.nav-menu a:hover {
+    opacity: 0.7;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 10%;
+    min-height: 70vh;
+    background-color: #7A1420;
+}
+
+.hero-texto {
+    flex: 1;
+    padding-right: 50px;
+}
+
+.hero-texto h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+    color: var(--texto-azul);
+    margin-bottom: 20px;
+}
+
+.hero-texto p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 550px;
+}
+
+.hero-imagem img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 40px; /* Bordas bem arredondadas como no print */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+
+/* Seção Fotografia */
+.fotografia {
+    background-color: var(--bg-rose);
+    padding: 100px 10%;
+    text-align: center;
+}
+
+.fotografia h2 {
+    font-size: 3.5rem;
+    margin-bottom: 50px;
+}
+
+.cards {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cards img {
+    width: 320px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 30px;
+    transition: var(--transicao);
+    cursor: pointer;
+}
+
+.cards img:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* Efeitos de Animação JS */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.btn-acessibilidade {
+    background-color: #ffffff33; /* Branco com transparência */
+    border: 2px solid white;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: var(--transicao);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-acessibilidade:hover {
+    background-color: white;
+    color: var(--bg-vinho);
+}
+
+/* Responsividade */
+@media (max-width: 968px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 40px;
+    }
+    .hero-texto {
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    .nav-menu {
+        display: none; /* Seria necessário JS para o toggle */
+    }
+}
