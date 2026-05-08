@@ -2,8 +2,6 @@
 
 Este projeto é um portfólio desenvolvido para a disciplina de **Acessibilidade e Inclusão Digital**, focado em garantir que a web seja um espaço para todos.
 
-![Captura de tela do portfólio mostrando o cabeçalho vinho e a seção sobre](link-da-sua-imagem-aqui.png)
-
 ## Percepção
 - **Descrições de Imagem:** Todas as imagens possuem o atributo `alt` detalhado.
 - **Contraste:** Cores selecionadas para garantir a leitura por pessoas com baixa visão.
