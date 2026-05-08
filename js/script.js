@@ -1,59 +1,218 @@
-// 1. Efeito de Revelação (Scroll Reveal)
-const revealElements = () => {
-    const reveals = document.querySelectorAll('.reveal');
-    
-    reveals.forEach(element => {
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150; // Distância para ativar a animação
-        
-        if (elementTop < windowHeight - elementVisible) {
-            element.classList.add('active');
-        }
+// =========================
+// MENU MOBILE
+// =========================
+
+const menuBtn =
+    document.querySelector('.menu-toggle');
+
+const navMenu =
+    document.querySelector('.nav-menu');
+
+if (menuBtn && navMenu) {
+
+    menuBtn.addEventListener('click', () => {
+
+        const isExpanded =
+            menuBtn.getAttribute('aria-expanded') === 'true';
+
+        menuBtn.setAttribute(
+            'aria-expanded',
+            !isExpanded
+        );
+
+        navMenu.classList.toggle('active');
+
     });
-};
 
-// Executa ao rolar a página
-window.addEventListener('scroll', revealElements);
+}
 
-// Executa uma vez ao carregar para mostrar o que já está na tela
-window.addEventListener('load', revealElements);
+// =========================
+// FECHAR MENU COM ESC
+// =========================
 
+document.addEventListener('keydown', (e) => {
 
-// 2. Menu Mobile Simples
-const menuBtn = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.nav-menu');
+    if (
+        e.key === 'Escape' &&
+        navMenu &&
+        navMenu.classList.contains('active')
+    ) {
 
-menuBtn.addEventListener('click', () => {
-   
-    if (nav.style.display === 'flex') {
-        nav.style.display = 'none';
-    } else {
-        nav.style.display = 'flex';
-        nav.style.flexDirection = 'column';
-        nav.style.position = 'absolute';
-        nav.style.top = '70px';
-        nav.style.left = '0';
-        nav.style.width = '100%';
-        nav.style.backgroundColor = '#72161c';
-        nav.style.padding = '20px';
-        nav.style.zIndex = '1000';
+        navMenu.classList.remove('active');
+
+        menuBtn.setAttribute(
+            'aria-expanded',
+            'false'
+        );
+
+        menuBtn.focus();
+
     }
+
 });
 
-const botaoAudio = document.getElementById('ouvir-texto');
-const textoParaLer = document.querySelector('.hero-texto p').innerText;
+// =========================
+// LEITOR DE TEXTO
+// =========================
 
-botaoAudio.addEventListener('click', () => {
-    // Cancela qualquer fala em andamento antes de começar
-    window.speechSynthesis.cancel();
+const narrador =
+    window.speechSynthesis;
 
-    const fala = new SpeechSynthesisUtterance(textoParaLer);
-    fala.lang = 'pt-BR'; // Define o idioma para português
-    fala.rate = 1.2;     // Velocidade da fala (1 é o normal)
-    
-    window.speechSynthesis.speak(fala);
+// FUNÇÃO PARA LER TEXTO
+
+function lerTexto(texto) {
+
+    if (!texto) return;
+
+    // PARA LEITURA ANTERIOR
+    narrador.cancel();
+
+    // CRIA FALA
+    const mensagem =
+        new SpeechSynthesisUtterance(texto);
+
+    mensagem.lang = 'pt-BR';
+
+    mensagem.rate = 1;
+
+    mensagem.pitch = 1;
+
+    mensagem.volume = 1;
+
+    // INICIA LEITURA
+    narrador.speak(mensagem);
+
+}
+
+// =========================
+// BOTÕES DE ÁUDIO
+// =========================
+
+// TODOS OS ELEMENTOS
+const elementosLeitura =
+    document.querySelectorAll(
+        'h1, h2, p'
+    );
+
+// LOOP
+elementosLeitura.forEach(elemento => {
+
+    // IGNORA ELEMENTOS
+    // COM CLASSE sem-audio
+    if (
+        elemento.classList.contains(
+            'sem-audio'
+        )
+    ) {
+        return;
+    }
+
+    // CRIA BOTÃO
+    const botao =
+        document.createElement('button');
+
+    // TEXTO
+    botao.innerText =
+        'Ouvir conteúdo desta seção';
+
+    // CLASSE
+    botao.classList.add(
+        'botao-audio'
+    );
+
+    // ACESSIBILIDADE
+    botao.setAttribute(
+        'aria-label',
+        'Ouvir conteúdo desta seção em voz alta'
+    );
+
+    // CLICK
+    botao.addEventListener('click', () => {
+
+        lerTexto(
+            elemento.innerText
+        );
+
+    });
+
+    // INSERE O BOTÃO
+    elemento.insertAdjacentElement(
+        'afterend',
+        botao
+    );
+
 });
 
-// 3. Log de Interação (Opcional - útil para testar acessibilidade)
-console.log("Portfólio de Acessibilidade carregado com sucesso!");
+// =========================
+// PARAR LEITURA COM ESC
+// =========================
+
+document.addEventListener('keydown', (e) => {
+
+    if (e.key === 'Escape') {
+
+        narrador.cancel();
+
+    }
+
+});
+
+// =========================
+// ANIMAÇÃO AO SCROLL
+// =========================
+
+const observador =
+    new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add(
+                    'active'
+                );
+
+            }
+
+        });
+
+    });
+
+document
+    .querySelectorAll('.reveal')
+    .forEach(el => {
+
+        observador.observe(el);
+
+    });
+
+// =========================
+// FECHAR MENU MOBILE
+// =========================
+
+document
+    .querySelectorAll('.nav-menu a')
+    .forEach(link => {
+
+        link.addEventListener('click', () => {
+
+            if (navMenu) {
+
+                navMenu.classList.remove(
+                    'active'
+                );
+
+            }
+
+            if (menuBtn) {
+
+                menuBtn.setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+
+            }
+
+        });
+
+    });

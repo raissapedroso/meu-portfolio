@@ -1,69 +1,219 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio | Raissa Pedroso</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+
+    <a href="#conteudo-principal" class="skip-link">
+        Pular para o conteúdo principal
+    </a>
+
     <header>
-        <nav class="navbar">
-            <a href="#" class="logo">Raissa Pedroso</a>
-            <button class="menu-toggle" aria-label="Abrir menu">☰</button>
-            <ul class="nav-menu">
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Projetos</a></li>
-                <li><a href="#">Contato</a></li>
+        <nav class="navbar" aria-label="Navegação principal">
+            <a href="#inicio" class="logo">Raissa Pedroso</a>
+
+            <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">
+                <span aria-hidden="true">☰</span>
+            </button>
+
+            <ul id="menu-principal" class="nav-menu">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section class="hero reveal">
-            <div class="hero-texto">
-                <button id="ouvir-texto" class="btn-acessibilidade">
-                    <span>🔊</span> Ouvir texto
-                </button>
-                <h1>Meu portfólio</h1>
-                <p>
-                    Olá, sou Raissa Pedroso, aluna do 5º semestre de Ciência da Computação. 
-                    Este portfólio é dedicado à disciplina de Acessibilidade e Inclusão Digital 
-                    e reúne as atividades desenvolvidas ao longo da matéria. O tema é de grande 
-                    importância para a computação e para a sociedade, por promover o acesso 
-                    inclusivo às tecnologias.
+    <main id="conteudo-principal">
+
+        <section id="inicio" class="hero">
+            <div class="hero-texto reveal">
+                <h1 class="titulo-principal titulo-heranca">
+                    Criando uma web
+                    <span class="destaque">para todos</span>.
+                </h1>
+
+                <p id="texto-principal">
+                    Olá, sou Raissa Pedroso, aluna de Ciência da Computação. 
+                    Este portfólio reflete meu trabalho na <strong> disciplina de Acessibilidade e Inclusão Digital,</strong> 
+                    focando em interfaces intuitivas e inclusivas.
                 </p>
             </div>
-            <div class="hero-imagem">
-                <img src="assets/images/eu.jpeg" alt="Foto de perfil de Raissa">
+
+            <div class="hero-imagem reveal">
+                <div class="moldura-foto">
+                    <img src="assets/images/eu.jpeg" alt="Foto de perfil de Raissa Pedroso">
+                </div>
             </div>
         </section>
 
-        <section class="fotografia">
-            <h2 class="reveal">Fotografia</h2>
-            <div class="cards">
-                <img src="assets/images/foto1.jpg" alt="IA e Conectividade" class="reveal">=
-            </div>
-            <div class="hero-texto">
-                <p>Lorem ipsum dolor sit amet. Quo asperiores cumque quo quod numquam aut asperiores aspernatur id 
-                    delectus dolorum quo repudiandae possimus est voluptatem similique aut tempora consequatur. 
-                    Est dolorem rerum id libero expedita At labore nemo. At alias quis ex facilis iure cum velit 
-                    consectetur. Non voluptates dolore sit rerum molestias vel deleniti dicta eos esse deserunt.</p>
+        <section id="sobre" class="secao-escura">
+            <div class="container">
+
+                <h2 class="sem-audio">Sobre o Projeto</h2>
+
+                    <p>
+                        A acessibilidade não é um recurso extra, é um direito.
+                        Este site foi desenvolvido seguindo as diretrizes da WCAG,
+                        garantindo acessibilidade e inclusão digital para todos os usuários.
+                    </p>
+
             </div>
         </section>
+
+        <section id="projetos" class="secao-clara">
+
+            <div class="container">
+
+                <h2 class="sem-audio">
+                    Norma técnica de acessibilidade
+                </h2>
+
+                <div class="cards">
+
+                    <!-- CARD 1 -->
+
+                    <div class="card reveal">
+
+                        <div class="card-info">
+
+                            <p> <strong>ABNT NBR 17060:2022:</strong> A ABNT NBR 17060:2022 define diretrizes para 
+                                tornar sites e aplicativos acessíveis, com requisitos baseados na WCAG, focando em 
+                                conteúdo, interação, mídia e estrutura do código.<br>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- CARD 2 -->
+
+                    <div class="card reveal">
+
+                        <div class="card-info">
+
+                            <p> <strong>ISO 9241-171:2008:</strong> A ISO 9241-171:2008 traz recomendações 
+                                ergonômicas para o desenvolvimento de softwares acessíveis, considerando 
+                                diferentes tipos de usuários e promovendo maior usabilidade com apoio a 
+                                tecnologias assistivas.<br>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="projetos" class="secao-escura">
+
+            <div class="container">
+
+                <h2 class="sem-audio">
+                    Registro Fotográfico
+                </h2>
+
+                <div class="cards">
+
+                    <!-- CARD 1 -->
+
+                    <div class="card reveal">
+
+                        <img
+                            src="assets/images/entradaApart.jpeg"
+                            alt="Conexões tecnológicas representadas por luzes em fundo escuro">
+
+                        <div class="card-info">
+
+                            <p> <strong>Descrição da imagem 1:</strong> A imagem mostra a entrada do edifício onde moro. Existe uma área com 
+                                piso claro que possui um degrau para subir da calçada (pavimentada com blocos de concreto) 
+                                até o patamar de entrada. À esquerda, há uma estrutura metálica com várias caixas de 
+                                correio e, ao centro, o portão principal gradeado que dá acesso ao prédio. Na parede à 
+                                direita, nota-se um interfone e etiquetas com informações dos apartamentos.<br>
+
+                                <strong>Problema:</strong> Esta imagem da entrada do meu prédio evidencia um problema crítico de 
+                                acessibilidade: o degrau impede a locomoção autônoma de pessoas com deficiência, 
+                                usuários de cadeira de rodas ou indivíduos com mobilidade reduzida, como aqueles 
+                                que utilizam bengalas ou muletas, impossibilitando a circulação com segurança e 
+                                independência.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- CARD 2 -->
+
+                    <div class="card reveal">
+
+                        <img
+                            src="assets/images/acessoApart.jpeg"
+                            alt="Conexões tecnológicas representadas por luzes em fundo escuro">
+
+                        <div class="card-info">
+
+                            <p> <strong>Descrição da imagem 2:</strong> Esta imagem apresenta a escadaria interna 
+                                que dá acesso aos apartamentos do edifício. Trata-se de uma estrutura de lances 
+                                retos com um patamar intermediário, equipada com corrimãos metálicos laterais.<br>
+
+                                <strong>Problema:</strong> A segunda imagem reforça a barreira identificada na 
+                                primeira imagem: a ausência de um elevador ou de qualquer sistema de 
+                                transposição vertical alternativo, como uma plataforma elevatória, isso torna 
+                                o edifício inacessível para pessoas com deficiência física, idosos ou qualquer 
+                                indivíduo com mobilidade reduzida temporária ou permanente. Essa configuração 
+                                força a dependência exclusiva da escada, isolando moradores com dificuldades de 
+                                locomoção e impedindo o acesso autônomo às suas residências.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="contato" class="secao-clara">
+            <div class="container">
+                <h2 class="sem-audio">Contato</h2>
+                <p>Vamos conversar?</p>
+                <br>
+                <a href="#" class="link-contato">raissamoura.aluno@unipampa.edu.br</a>
+            </div>
+        </section>
+
     </main>
 
-    <script src="js/script.js"></script>
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
             <div class="vw-plugin-top-wrapper"></div>
         </div>
     </div>
+
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
+
+    <script src="js/script.js"></script>
+
 </body>
 </html>
