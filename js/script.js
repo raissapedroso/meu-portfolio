@@ -1,24 +1,14 @@
-// =========================
-// MENU MOBILE
-// =========================
+const menuBtn = document.querySelector('.menu-toggle');
 
-const menuBtn =
-    document.querySelector('.menu-toggle');
-
-const navMenu =
-    document.querySelector('.nav-menu');
+const navMenu = document.querySelector('.nav-menu');
 
 if (menuBtn && navMenu) {
 
     menuBtn.addEventListener('click', () => {
 
-        const isExpanded =
-            menuBtn.getAttribute('aria-expanded') === 'true';
+        const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
 
-        menuBtn.setAttribute(
-            'aria-expanded',
-            !isExpanded
-        );
+        menuBtn.setAttribute('aria-expanded', !isExpanded);
 
         navMenu.classList.toggle('active');
 
@@ -32,18 +22,11 @@ if (menuBtn && navMenu) {
 
 document.addEventListener('keydown', (e) => {
 
-    if (
-        e.key === 'Escape' &&
-        navMenu &&
-        navMenu.classList.contains('active')
-    ) {
+    if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
 
         navMenu.classList.remove('active');
 
-        menuBtn.setAttribute(
-            'aria-expanded',
-            'false'
-        );
+        menuBtn.setAttribute('aria-expanded', 'false');
 
         menuBtn.focus();
 
@@ -51,12 +34,8 @@ document.addEventListener('keydown', (e) => {
 
 });
 
-// =========================
-// LEITOR DE TEXTO
-// =========================
-
-const narrador =
-    window.speechSynthesis;
+// leitor de texto
+const narrador = window.speechSynthesis;
 
 // FUNÇÃO PARA LER TEXTO
 
@@ -68,8 +47,7 @@ function lerTexto(texto) {
     narrador.cancel();
 
     // CRIA FALA
-    const mensagem =
-        new SpeechSynthesisUtterance(texto);
+    const mensagem = new SpeechSynthesisUtterance(texto);
 
     mensagem.lang = 'pt-BR';
 
@@ -89,57 +67,38 @@ function lerTexto(texto) {
 // =========================
 
 // TODOS OS ELEMENTOS
-const elementosLeitura =
-    document.querySelectorAll(
-        'h1, h2, p'
-    );
+const elementosLeitura = document.querySelectorAll('h1, h2, p');
 
 // LOOP
 elementosLeitura.forEach(elemento => {
 
     // IGNORA ELEMENTOS
     // COM CLASSE sem-audio
-    if (
-        elemento.classList.contains(
-            'sem-audio'
-        )
-    ) {
+    if (elemento.classList.contains('sem-audio')) {
         return;
     }
 
     // CRIA BOTÃO
-    const botao =
-        document.createElement('button');
+    const botao = document.createElement('button');
 
     // TEXTO
-    botao.innerText =
-        'Ouvir conteúdo desta seção';
+    botao.innerText = 'Ouvir conteúdo desta seção';
 
     // CLASSE
-    botao.classList.add(
-        'botao-audio'
-    );
+    botao.classList.add('botao-audio');
 
     // ACESSIBILIDADE
-    botao.setAttribute(
-        'aria-label',
-        'Ouvir conteúdo desta seção em voz alta'
-    );
+    botao.setAttribute('aria-label', 'Ouvir conteúdo desta seção em voz alta');
 
     // CLICK
     botao.addEventListener('click', () => {
 
-        lerTexto(
-            elemento.innerText
-        );
+        lerTexto(elemento.innerText);
 
     });
 
     // INSERE O BOTÃO
-    elemento.insertAdjacentElement(
-        'afterend',
-        botao
-    );
+    elemento.insertAdjacentElement( 'afterend', botao);
 
 });
 
@@ -150,9 +109,7 @@ elementosLeitura.forEach(elemento => {
 document.addEventListener('keydown', (e) => {
 
     if (e.key === 'Escape') {
-
         narrador.cancel();
-
     }
 
 });
@@ -168,28 +125,19 @@ const observador =
 
             if (entry.isIntersecting) {
 
-                entry.target.classList.add(
-                    'active'
-                );
+                entry.target.classList.add('active');
 
             }
-
         });
-
     });
 
 document
     .querySelectorAll('.reveal')
     .forEach(el => {
-
         observador.observe(el);
-
     });
 
-// =========================
-// FECHAR MENU MOBILE
-// =========================
-
+// fechar menu mobile
 document
     .querySelectorAll('.nav-menu a')
     .forEach(link => {
@@ -197,22 +145,11 @@ document
         link.addEventListener('click', () => {
 
             if (navMenu) {
-
-                navMenu.classList.remove(
-                    'active'
-                );
-
+                navMenu.classList.remove('active');
             }
 
             if (menuBtn) {
-
-                menuBtn.setAttribute(
-                    'aria-expanded',
-                    'false'
-                );
-
+                menuBtn.setAttribute('aria-expanded', 'false');
             }
-
         });
-
     });
