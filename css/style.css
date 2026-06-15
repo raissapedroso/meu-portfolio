@@ -17,19 +17,23 @@
     box-sizing: border-box;
 }
 
-div[vw] img {
-    max-width: none !important;
-    width: auto !important;
-    height: auto !important;
-}
-
-
 body {
     font-family: 'Inter', sans-serif;
     background: var(--fundo-claro);
     color: var(--texto-escuro);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+/* Ignorar restrições na imagem do VLibras */
+div[vw] img {
+    max-width: none !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+div[vw].enabled {
+    z-index: 99999 !important;
 }
 
 :focus-visible {
@@ -52,7 +56,6 @@ body {
 .skip-link:focus {
     top: 0;
 }
-
 
 .navbar {
     display: flex;
@@ -102,24 +105,47 @@ body {
     font-size: 1.5rem;
 }
 
+section {
+    padding: 100px 10%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.secao-escura {
+    background: var(--vinho-principal);
+    color: white;
+    text-align: center;
+}
+
+.secao-clara {
+    background: var(--fundo-claro);
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
 
 .hero {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 40px; /* reduzido para dar mais espaço ao texto */
+    gap: 40px;
     min-height: 80vh;
     padding: 100px 10%;
     flex-wrap: wrap;
 }
 
 .hero-texto {
-    flex: 1.5; /* prioriza o espaço para o texto em relação à imagem */
+    flex: 1.5;
     min-width: 300px;
 }
 
 .titulo-principal {
-    /* tipografia fluida que se ajusta ao tamanho da tela */
     font-size: clamp(2.2rem, 8vw, 4.5rem);
     line-height: 1.2;
     color: var(--vinho-profundo);
@@ -129,7 +155,6 @@ body {
 
 .destaque {
     color: var(--rose-suave);
-    /* SOLUÇÃO: Impede que as palavras quebrem linha dentro deste span */
     white-space: nowrap;
     display: inline-block;
 }
@@ -162,143 +187,176 @@ body {
     object-fit: cover;
 }
 
-
-section {
-    padding: 100px 10%;
-}
-
-.container {
-    max-width: 1200px;
-    margin: auto;
-}
-
-.secao-escura {
-    background: var(--vinho-principal);
-    color: white;
-    text-align: center;
-}
-
-.secao-clara {
-    background: var(--fundo-claro);
-    text-align: center;
-}
-
-h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-}
-
 .cards {
-
     display: flex;
-
     flex-direction: column;
-
     gap: 30px;
-
     margin-top: 50px;
 }
 
-
 .card {
-
     display: flex;
-
     align-items: center;
-
     gap: 25px;
-
     background: white;
-
     border-radius: 20px;
-
     overflow: hidden;
-
     padding: 20px;
-
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.05);
-
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     transition: var(--transicao);
-
     color: var(--texto-escuro);
 }
 
 .card:hover {
-
     transform: translateY(-10px);
 }
 
-/* IMAGEM */
-
 .card img {
-
     width: 320px;
-
     height: 300px;
-
     object-fit: cover;
-
     border-radius: 12px;
-
     flex-shrink: 0;
 }
 
-/* TEXTO */
-
 .card-info {
-
     flex: 1;
-
     text-align: left;
 }
 
 .card-info p {
-
     font-size: 1.05rem;
-
     line-height: 1.7;
 }
 
-/* RESPONSIVO */
-
-@media (max-width: 768px) {
-
-    .card {
-
-        flex-direction: column;
-
-        text-align: center;
-    }
-
-    .card img {
-
-        width: 200%;
-
-        height: 300px;
-    }
-
-    .card-info {
-
-        text-align: center;
-    }
-
+/* ==========================================================================
+   6. NOVA SEÇÃO ACESSÍVEL: PROCESSOS, MÉTODOS E FERRAMENTAS
+   ========================================================================== */
+.secao-cards {
+    padding: 60px 10%;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-/* ========================= */
-/* CONTATO */
-/* ========================= */
+.container-cards {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 40px;
+}
 
+.card-acessivel {
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 30px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 360px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: var(--transicao);
+    text-align: left;
+}
+
+.card-acessivel:focus-within,
+.card-acessivel:hover {
+    transform: translateY(-5px);
+    border-color: var(--vinho-principal);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-icone {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.card-titulo {
+    font-size: 1.5rem;
+    color: var(--vinho-profundo);
+    margin-bottom: 12px;
+}
+
+.card-descricao {
+    font-size: 1rem;
+    color: #333333;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.card-lista {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #444444;
+}
+
+.card-lista li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   7. BOTÕES DE ÁUDIO AUTOMÁTICOS (GERADOS PELO JS)
+   ========================================================================== */
+.botao-audio {
+    background: linear-gradient(135deg, var(--vinho-principal), var(--vinho-profundo));
+    color: var(--texto-claro);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 999px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    transition: var(--transicao);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 10px 20px rgba(114, 22, 28, 0.20);
+    position: relative;
+    overflow: hidden;
+}
+
+.botao-audio:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 14px 28px rgba(114, 22, 28, 0.30);
+    background: linear-gradient(135deg, var(--vinho-profundo), #2e080b);
+}
+
+.botao-audio:active {
+    transform: scale(0.98);
+}
+
+.botao-audio:focus-visible {
+    outline: 3px solid var(--foco);
+    outline-offset: 4px;
+}
+
+/* Ajuste do botão quando injetado dentro de seções escuras */
+.secao-escura .botao-audio {
+    background: white;
+    color: var(--vinho-principal);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
+}
+
+.secao-escura .botao-audio:hover {
+    background: #f3f3f3;
+    color: var(--vinho-profundo);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+}
+
+/* ==========================================================================
+   8. OUTROS ELEMENTOS E ANIMAÇÕES
+   ========================================================================== */
 .link-contato {
     color: var(--rose-suave);
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: 700;
 }
-
-/* ========================= */
-/* ACESSIBILIDADE & ANIMAÇÃO */
-/* ========================= */
 
 .reveal {
     opacity: 0;
@@ -311,7 +369,9 @@ h2 {
     transform: translateY(0);
 }
 
-
+/* ==========================================================================
+   9. REGRAS DE RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================================================== */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -351,113 +411,26 @@ h2 {
     h2 {
         font-size: 2rem;
     }
+
+    /* Correção da quebra de layout dos cards originais no mobile */
+    .card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .card img {
+        width: 100%; /* CORRIGIDO: Antes estava 200%, o que quebrava a tela */
+        height: 300px;
+    }
+
+    .card-info {
+        text-align: center;
+    }
 }
 
-/* Ajuste adicional para celulares muito pequenos */
+/* Ajuste para celulares pequenos */
 @media (max-width: 480px) {
     .titulo-principal {
         font-size: clamp(1.8rem, 10vw, 2.5rem);
     }
-}
-
-
-.botao-audio {
-
-    background: linear-gradient(
-        135deg,
-        var(--vinho-principal),
-        var(--vinho-profundo)
-    );
-
-    color: var(--texto-claro);
-
-    border: none;
-
-    padding: 14px 24px;
-
-    border-radius: 999px;
-
-    cursor: pointer;
-
-    margin-top: 15px;
-
-    margin-bottom: 25px;
-
-    font-size: 0.95rem;
-
-    font-weight: 700;
-
-    letter-spacing: 0.3px;
-
-    transition: var(--transicao);
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 8px;
-
-    box-shadow:
-        0 10px 20px rgba(114, 22, 28, 0.20);
-
-    position: relative;
-
-    overflow: hidden;
-}
-
-.botao-audio:hover {
-
-    transform:
-        translateY(-3px)
-        scale(1.03);
-
-    box-shadow:
-        0 14px 28px rgba(114, 22, 28, 0.30);
-
-    background: linear-gradient(
-        135deg,
-        var(--vinho-profundo),
-        #2e080b
-    );
-}
-
-.botao-audio:active {
-
-    transform: scale(0.98);
-}
-
-/* foco acessível */
-.botao-audio:focus-visible {
-
-    outline: 3px solid white;
-
-    outline-offset: 4px;
-}
-
-/* botão em fundo escuro */
-.secao-escura .botao-audio {
-
-    background: white;
-
-    color: var(--vinho-principal);
-
-    box-shadow:
-        0 10px 20px rgba(0, 0, 0, 0.20);
-}
-
-.secao-escura .botao-audio:hover {
-
-    background: #f3f3f3;
-
-    color: var(--vinho-profundo);
-
-    box-shadow:
-        0 14px 28px rgba(0, 0, 0, 0.25);
-}
-
-
-div[vw].enabled {
-    z-index: 99999 !important;
 }
