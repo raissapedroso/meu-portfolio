@@ -264,11 +264,11 @@ h2 {
 
     width: 320px;
 
-    height: 220px;
+    height: 300px;
 
     object-fit: cover;
 
-    border-radius: 15px;
+    border-radius: 12px;
 
     flex-shrink: 0;
 }
@@ -302,9 +302,9 @@ h2 {
 
     .card img {
 
-        width: 100%;
+        width: 200%;
 
-        height: 220px;
+        height: 300px;
     }
 
     .card-info {
@@ -340,9 +340,6 @@ h2 {
     transform: translateY(0);
 }
 
-/* ========================= */
-/* RESPONSIVIDADE */
-/* ========================= */
 
 @media (max-width: 768px) {
     .menu-toggle {
@@ -392,9 +389,6 @@ h2 {
     }
 }
 
-/* ========================= */
-/* BOTÕES */
-/* ========================= */
 
 .botao-audio {
 
@@ -442,8 +436,6 @@ h2 {
     overflow: hidden;
 }
 
-/* EFEITO HOVER */
-
 .botao-audio:hover {
 
     transform:
@@ -460,15 +452,12 @@ h2 {
     );
 }
 
-/* CLICK */
-
 .botao-audio:active {
 
     transform: scale(0.98);
 }
 
-/* FOCO ACESSÍVEL */
-
+/* foco acessível */
 .botao-audio:focus-visible {
 
     outline: 3px solid white;
@@ -476,10 +465,7 @@ h2 {
     outline-offset: 4px;
 }
 
-/* ========================= */
-/* BOTÃO EM FUNDO ESCURO */
-/* ========================= */
-
+/* botão em fundo escuro */
 .secao-escura .botao-audio {
 
     background: white;
@@ -500,9 +486,6 @@ h2 {
         0 14px 28px rgba(0, 0, 0, 0.25);
 }
 
-/* ========================= */
-/* VLIBRAS */
-/* ========================= */
 
 div[vw].enabled {
     z-index: 99999 !important;

@@ -118,8 +118,7 @@ document.addEventListener('keydown', (e) => {
 // ANIMAÇÃO AO SCROLL
 // =========================
 
-const observador =
-    new IntersectionObserver((entries) => {
+const observador = new IntersectionObserver((entries) => {
 
         entries.forEach(entry => {
 
