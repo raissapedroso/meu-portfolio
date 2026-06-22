@@ -114,10 +114,28 @@ section {
     margin: auto;
 }
 
+/* ==========================================================================
+   CONFIGURAÇÕES DE SEÇÃO ESCURA E TEXTOS DE CARDS
+   ========================================================================== */
 .secao-escura {
     background: var(--vinho-principal);
     color: white;
     text-align: center;
+}
+
+/* Força os textos gerais de seções escuras a serem claros */
+.secao-escura h2,
+.secao-escura h3,
+.secao-escura p,
+.secao-escura li {
+    color: var(--texto-claro);
+}
+
+/* Correção para cards com fundo branco dentro de seções escuras (ex: seção REA) */
+.secao-escura .card p,
+.secao-escura .card strong,
+.secao-escura .card h3 {
+    color: var(--texto-escuro) !important;
 }
 
 .secao-clara {
@@ -230,7 +248,7 @@ h2 {
 }
 
 /* ==========================================================================
-   6. NOVA SEÇÃO ACESSÍVEL: PROCESSOS, MÉTODOS E FERRAMENTAS
+   SEÇÃO DE CARDS ACESSÍVEIS (PARELHOS E ALINHADOS)
    ========================================================================== */
 .secao-cards {
     padding: 60px 10%;
@@ -238,14 +256,18 @@ h2 {
     margin: 0 auto;
 }
 
+/* Força os elementos a se esticarem na mesma altura */
 .container-cards {
     display: flex;
     gap: 24px;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: stretch; 
     margin-top: 40px;
+    width: 100%;
 }
 
+/* O card atua como uma coluna flexível */
 .card-acessivel {
     background-color: #ffffff;
     border: 2px solid #e0e0e0;
@@ -253,17 +275,28 @@ h2 {
     padding: 30px;
     flex: 1;
     min-width: 280px;
-    max-width: 360px;
+    max-width: 450px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     transition: var(--transicao);
     text-align: left;
+    display: flex;
+    flex-direction: column; 
 }
 
 .card-acessivel:focus-within,
 .card-acessivel:hover {
     transform: translateY(-5px);
-    border-color: var(--vinho-principal);
+    border-color: var(--rose-suave);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Mantém os textos de dentro dos cards acessíveis sempre escuros (sobre o fundo branco) */
+.card-acessivel .card-titulo,
+.card-acessivel .card-descricao,
+.card-acessivel p,
+.card-acessivel .card-lista,
+.card-acessivel .card-lista li {
+    color: var(--texto-escuro) !important;
 }
 
 .card-icone {
@@ -279,7 +312,6 @@ h2 {
 
 .card-descricao {
     font-size: 1rem;
-    color: #333333;
     line-height: 1.5;
     margin-bottom: 15px;
 }
@@ -287,7 +319,7 @@ h2 {
 .card-lista {
     list-style-type: disc;
     padding-left: 20px;
-    color: #444444;
+    margin-bottom: 15px;
 }
 
 .card-lista li {
@@ -300,12 +332,12 @@ h2 {
    ========================================================================== */
 .botao-audio {
     background: linear-gradient(135deg, var(--vinho-principal), var(--vinho-profundo));
-    color: var(--texto-claro);
+    color: var(--texto-claro) !important;
     border: none;
     padding: 12px 24px;
     border-radius: 999px;
     cursor: pointer;
-    margin-top: 15px;
+    margin-top: 15px; 
     margin-bottom: 25px;
     font-size: 0.95rem;
     font-weight: 700;
@@ -318,6 +350,13 @@ h2 {
     box-shadow: 0 10px 20px rgba(114, 22, 28, 0.20);
     position: relative;
     overflow: hidden;
+    align-self: flex-start;
+}
+
+/* Regra específica para os cards emparelhados: gruda o botão no fundo do card */
+.card-acessivel .botao-audio {
+    margin-top: auto !important; 
+    margin-bottom: 10px;
 }
 
 .botao-audio:hover {
@@ -335,16 +374,23 @@ h2 {
     outline-offset: 4px;
 }
 
-/* Ajuste do botão quando injetado dentro de seções escuras */
+/* Ajuste do botão injetado em seções escuras cruas (sem estar em cards) */
 .secao-escura .botao-audio {
     background: white;
-    color: var(--vinho-principal);
+    color: var(--vinho-principal) !important;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
+}
+
+/* Garante o estilo roxo/vinho original se o botão estiver dentro de qualquer bloco de card */
+.card .botao-audio,
+.card-acessivel .botao-audio {
+    background: linear-gradient(135deg, var(--vinho-principal), var(--vinho-profundo));
+    color: var(--texto-claro) !important;
 }
 
 .secao-escura .botao-audio:hover {
     background: #f3f3f3;
-    color: var(--vinho-profundo);
+    color: var(--vinho-profundo) !important;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
 }
 
@@ -412,19 +458,22 @@ h2 {
         font-size: 2rem;
     }
 
-    /* Correção da quebra de layout dos cards originais no mobile */
     .card {
         flex-direction: column;
         text-align: center;
     }
 
     .card img {
-        width: 100%; /* CORRIGIDO: Antes estava 200%, o que quebrava a tela */
+        width: 100%; 
         height: 300px;
     }
 
     .card-info {
         text-align: center;
+    }
+    
+    .card-acessivel {
+        max-width: 100%;
     }
 }
 

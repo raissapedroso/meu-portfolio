@@ -72,25 +72,19 @@ const elementosLeitura = document.querySelectorAll('h1, h2, p');
 // LOOP
 elementosLeitura.forEach(elemento => {
 
-    // IGNORA ELEMENTOS
-    // COM CLASSE sem-audio
     if (elemento.classList.contains('sem-audio')) {
         return;
     }
 
-    // CRIA BOTÃO
     const botao = document.createElement('button');
 
-    // TEXTO
-    botao.innerText = 'Ouvir conteúdo desta seção';
+    botao.innerText = '🔊 Ouvir conteúdo desta seção';
 
-    // CLASSE
     botao.classList.add('botao-audio');
 
     // ACESSIBILIDADE
     botao.setAttribute('aria-label', 'Ouvir conteúdo desta seção em voz alta');
 
-    // CLICK
     botao.addEventListener('click', () => {
 
         lerTexto(elemento.innerText);
