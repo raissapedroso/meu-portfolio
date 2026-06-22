@@ -414,7 +414,28 @@ h2 {
     opacity: 1;
     transform: translateY(0);
 }
+.link-acessivel {
+    color: var(--vinho-principal); /* Cor forte que dá ótimo contraste no fundo branco */
+    text-decoration: underline; /* Essencial para acessibilidade visual */
+    font-weight: 700; /* Deixa o link mais perceptível */
+    transition: var(--transicao);
+    border-radius: 4px; /* Suaviza a área de foco */
+    padding: 2px 4px; /* Melhora a área de clique */
+    margin: -2px -4px;
+}
 
+.link-acessivel:hover {
+    color: var(--vinho-profundo);
+    text-decoration: none; /* Inverte o comportamento ao passar o mouse */
+    background-color: rgba(114, 22, 28, 0.05); /* Um leve fundo vinho bem suave */
+}
+
+/* Garante que o foco pelo teclado respeite o padrão de alta visibilidade que você já criou */
+.link-acessivel:focus-visible {
+    outline: 3px solid var(--foco);
+    outline-offset: 2px;
+    background-color: transparent;
+}
 /* ==========================================================================
    9. REGRAS DE RESPONSIVIDADE (MEDIA QUERIES)
    ========================================================================== */
